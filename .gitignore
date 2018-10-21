@@ -1,0 +1,8 @@
+terraform.tfvars
+keys/ssh.pub
+.terraform*
+.terraform/
+rke_stuff/
+*.tfstate*
+terraform.tfvars.orig
+certs/
