@@ -14,8 +14,10 @@ echo ""
 echo "This tool will do the following, with no remorse:"
 echo ""
 echo "--- FORCED TERRAFORM \"DESTROY\" AND \"APPLY\" ACTIONS TO THE TERRAFORM STATE IN THE CURRENT DIR ---"
-echo "--- USE THE FOLLOWING KEY TO LOGIN TO SETUP K8s: ${1} ---"
+echo "---"
 echo "--- Run \"rm -f kube_config_rkecluster.yml\" in the current directory ---"
+echo "---"
+echo "--- I'LL USE THE FOLLOWING SSH KEY: ${1} ---"
 echo ""
 read -p "You're SURE about proceeding? (y/n) -- do not proceed unless you're certain: " selection
 if [[ $selection != "y" ]];
@@ -30,11 +32,11 @@ exit 1
 fi
 
 rm -f kube_config_rkecluster.yml || true
-terraform destroy -auto-approve=true
+#terraform destroy -auto-approve=true
 terraform apply -auto-approve=true
 
-echo "Docker needs to be up and running on the hosts. We're waiting 60 seconds to ensure the install has taken place and we're good to go."
-sleep 60
+echo "Docker needs to be up and running on the hosts. We're waiting 90 seconds to ensure the install has taken place and we're good to go."
+sleep 90
 
 elbhost=$(terraform output load_balancer_hostname)
 serverone=$(terraform output server1_ext_ip)
@@ -71,7 +73,8 @@ sleep 5
 kubectl -n kube-system create serviceaccount tiller
 kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
 helm --kubeconfig "${PWD}/kube_config_rkecluster.yml" init --service-account tiller
-sleep 1
+echo "Waiting 10 secs for tiller"
+sleep 10
 kubectl get po --all-namespaces
 helm --kubeconfig "${PWD}/kube_config_rkecluster.yml" repo add rancher-stable https://releases.rancher.com/server-charts/stable
 helm --kubeconfig "${PWD}/kube_config_rkecluster.yml" install stable/cert-manager --name cert-manager --namespace kube-system

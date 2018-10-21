@@ -1,0 +1,16 @@
+nodes:
+  - address: 54.172.216.238
+    internal_address: 10.10.10.240
+    user: ubuntu
+    role: [controlplane,worker,etcd]
+    ssh_key_path: /Users/matt/Documents/keys_certs/matt_ssh.pem
+  - address: 34.239.137.172
+    internal_address: 10.10.11.161
+    user: ubuntu
+    role: [controlplane,worker,etcd]
+    ssh_key_path: /Users/matt/Documents/keys_certs/matt_ssh.pem
+  - address: 54.198.164.182
+    internal_address: 10.10.10.93
+    user: ubuntu
+    role: [controlplane,worker,etcd]
+    ssh_key_path: /Users/matt/Documents/keys_certs/matt_ssh.pem
