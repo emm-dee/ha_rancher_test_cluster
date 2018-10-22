@@ -6,7 +6,7 @@ It's to easily create a demo HA cluster and show the steps/components involved. 
 
 It will create the VPC, ssh keys, subnets, route 53, run cloud init, etc.
 
-Nothing fancy here, just straight up infrastructure - quick & easy. 
+Nothing fancy here, just straight up infrastructure - quick & easy. The original reason for this project was because I was tired of constantly recreating my cluster by hand, so this solved that for me. 
 
 
 ## Required Software:
@@ -16,7 +16,7 @@ Nothing fancy here, just straight up infrastructure - quick & easy.
 * **kubectl** It needs to be accessible to your shell as the command `kubectl`
 
 ## Config:
-* Fill in variables. This project comes with an `example.tfvars` file to show how the variables should be filled in. Easiest way to get it working is to just rename it to `terraform.tfvars` and **fill in your required values**
+* Fill in variables. This project comes with an `example.tfvars` file to show how the variables should be filled in. Easiest way to get it working is to just rename it to `terraform.tfvars` and **fill in your required values**. Not all values need to be edited, read the comments in `example.tfvars` for some more info.
 * SSH Keys. Generate them using your own method and drop the pub key into the `keys/` directory, you'll want to put your public ssh key in here. Be sure to set the path to the key in the `tfvars` file. 
 * Edit the cloud-init if you want to (more info below)
 * Regarding route 53 and the zones: The zone should already be setup in R53. Fill in the zone ID and domain name in the tfvars. 
@@ -37,3 +37,5 @@ For example:
 ```
 ./rkecluster.sh /Users/myuser/keys/sshkey.pem
 ```
+
+Please note that it may take up to 3-5 minutes for the server to be fully responsive. Using higher power instances will shorten this time. 
