@@ -7,7 +7,8 @@ domain_name = "your.desired.domain.name"
 # Region, change if needed...
 region = "us-east-1"
 
-# AMI here is Ubuntu 16.04 in us-east region... Change if needed...
+# Must be an Ubuntu 16.04 AMI. 
+# AMI listed here is Ubuntu 16.04 in us-east-1 region... Change if needed...
 ec2_instance_ami = "ami-059eeca93cf09eebd"
 
 # The public CIDR IP of your workstation so you can connect to the instances public address. Be sure to include the /32 since this will be used for a security group rule. 
