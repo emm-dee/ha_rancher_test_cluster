@@ -13,6 +13,7 @@ Nothing fancy here, just straight up infrastructure - quick & easy.
 * **terraform** `v0.11.8+`. Tested working with `0.11.8`. It needs to be accessible to your shell as the command `terraform`
 * **rke** (tested with `v0.1.10`). It needs to be accessible to your shell as the command `rke`
 * **helm** (tested with `v2.11.0`). It needs to be accessible to your shell as the command `helm`
+* **kubectl** It needs to be accessible to your shell as the command `kubectl`
 
 ## Config:
 * Fill in variables. This project comes with an `example.tfvars` file to show how the variables should be filled in. Easiest way to get it working is to just rename it to `terraform.tfvars` and **fill in your required values**
