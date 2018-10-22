@@ -31,14 +31,17 @@ echo "Error: terraform or rke not installed under the commands: terraform, rke"
 exit 1
 fi
 
+
 rm -f kube_config_rkecluster.yml || true
-#terraform destroy -auto-approve=true
+
+terraform init
+terraform destroy -auto-approve=true
 terraform apply -auto-approve=true
 
 echo "Docker needs to be up and running on the hosts. We're waiting 90 seconds to ensure the install has taken place and we're good to go."
 sleep 90
 
-elbhost=$(terraform output load_balancer_hostname)
+elbhost=$(terraform output elb_full_domain_name)
 serverone=$(terraform output server1_ext_ip)
 servertwo=$(terraform output server2_ext_ip)
 serverthree=$(terraform output server3_ext_ip)

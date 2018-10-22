@@ -28,3 +28,6 @@ output "server3_ext_ip" {
 output "load_balancer_hostname" {
   value = "${aws_lb.demo_elb.dns_name}"
 }
+output "elb_full_domain_name" {
+  value = "${var.demo_elb_name}.${var.domain_name}"
+}

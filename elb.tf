@@ -3,7 +3,7 @@
 
 resource "aws_route53_record" "server-elb" {
   zone_id = "${var.r53_zone_id}"
-  name = "demo-elb-host"
+  name = "${var.demo_elb_name}"
   type    = "CNAME"
   ttl     = "60"
   records = ["${aws_lb.demo_elb.dns_name}"]

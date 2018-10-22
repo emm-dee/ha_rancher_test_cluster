@@ -6,4 +6,5 @@ rke_stuff/
 *.tfstate*
 terraform.tfvars.orig
 certs/
+rkecluster.yml
 kube_config_rkecluster.yml
