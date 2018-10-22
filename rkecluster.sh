@@ -76,8 +76,8 @@ sleep 5
 kubectl -n kube-system create serviceaccount tiller
 kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
 helm --kubeconfig "${PWD}/kube_config_rkecluster.yml" init --service-account tiller
-echo "Waiting 10 secs for tiller"
-sleep 10
+echo "Waiting 30 secs for tiller"
+sleep 30
 kubectl get po --all-namespaces
 helm --kubeconfig "${PWD}/kube_config_rkecluster.yml" repo add rancher-stable https://releases.rancher.com/server-charts/stable
 helm --kubeconfig "${PWD}/kube_config_rkecluster.yml" install stable/cert-manager --name cert-manager --namespace kube-system
